@@ -21,16 +21,16 @@ const Menu = () => {
             {/* menu Category */}
             <Cover image={menuImg} title={'OUR MENU'} ></Cover>
             <SectionTitle subHeading="---Don't miss---" heading={"TODAY'S OFFER"} ></SectionTitle>
-            <MenuCategory items={offered} ></MenuCategory>
+            <MenuCategory items={offered} title={'OUR MENU'}></MenuCategory>
             {/* Desserts Category */}
             <Cover image={dessertsImg} title={'Desserts'}></Cover>
-            <MenuCategory items={desserts} ></MenuCategory>
+            <MenuCategory items={desserts} title={'dessert'}></MenuCategory>
             {/* Pizza Category */}
-            <Cover image={pizzaImg} title={'Desserts'}></Cover>
-            <MenuCategory items={pizza} ></MenuCategory>
+            <Cover image={pizzaImg} title={'soups'}></Cover>
+            <MenuCategory items={pizza} title={'soup'}></MenuCategory>
             {/* salad Category */}
             <Cover image={saladImg} title={'Pizza'}></Cover>
-            <MenuCategory items={salad} ></MenuCategory>
+            <MenuCategory items={salad} title={'pizza'}></MenuCategory>
         </div>
     );
 };

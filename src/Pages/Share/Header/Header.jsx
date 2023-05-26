@@ -22,7 +22,7 @@ const Header = () => {
           Home
         </Link>
         <Link to="/menu">Menu</Link>
-        <Navbar.Link href="/order">Our Order</Navbar.Link>
+        <Navbar.Link href="/order/salad">Our Order</Navbar.Link>
         <Navbar.Link href="/navbars">Pricing</Navbar.Link>
         <Navbar.Link href="/navbars">Contact</Navbar.Link>
       </Navbar.Collapse>
