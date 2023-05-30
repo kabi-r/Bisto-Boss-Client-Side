@@ -6,3 +6,10 @@
     max-width: 1280px;
     margin:0 auto;
 }
+.login{
+    background-image: url('../../../assets/menu/menu-bg.png');
+}
+
+.custom{
+    background-color: rgba(59, 59, 59, 0.5);
+}
