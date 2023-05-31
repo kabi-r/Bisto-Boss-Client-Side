@@ -13,3 +13,16 @@
 .custom{
     background-color: rgba(59, 59, 59, 0.5);
 }
+.navlink a.active {
+    color: white;
+  }
+ /* .deleteBtn{
+    background-color: red;
+    color: white;
+    padding:16px 19px;
+ }  */
+
+ tr {
+   background-color: black;
+    
+ }

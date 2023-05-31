@@ -5,7 +5,7 @@ import SectionTitle from '../../../components/SectionTitle/SectionTitle';
 const Food = () => {
     const [foods, setFood] = useState([])
     useEffect(()=>{
-        fetch('menu.json')
+        fetch('http://localhost:5000/menu')
         .then(res => res.json())
         .then(data => {
             const showData = data.slice(0,3)

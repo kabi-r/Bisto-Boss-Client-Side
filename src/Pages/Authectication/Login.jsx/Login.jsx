@@ -7,13 +7,15 @@ import {
 } from "react-simple-captcha";
 import img from "../../../assets/others/authentication2.png";
 import { Button } from "flowbite-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import Swal from "sweetalert2";
 
 const Login = () => {
   const {singIn} = useContext(AuthContext)
-  const nagivate = useNavigate()
+  const location = useLocation()
+  const navigate = useNavigate()
+  const from = location.state?.from?.pathname || '/';
   const captchaRef = useRef(null);
   const [disable, setDisable] = useState("true");
   useEffect(() => {
@@ -24,17 +26,17 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    // console.log(email, password);
     singIn(email, password)
     .then(result => {
       const LoggedUser = result.user;
-      console.log(LoggedUser);
+      // console.log(LoggedUser);
       Swal.fire(
         'Yahh!',
         'Successfully Login!',
         'success' 
       )
-      nagivate('/')
+      navigate(from , {replace:true})
     })
     .catch(error => {
       console.log(error.message);
@@ -119,7 +121,7 @@ const Login = () => {
             >
               Log In
             </button> */}
-            <Button disabled={disable} type="submit" className="w-full">
+            <Button disabled={false} type="submit" className="w-full">
               Log In
             </Button>
           </form>
