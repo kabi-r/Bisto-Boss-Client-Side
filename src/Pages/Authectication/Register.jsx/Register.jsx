@@ -1,40 +1,57 @@
 import { Button } from "flowbite-react";
 import React, { useContext } from "react";
 import img from "../../../assets/others/authentication2.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import Swal from "sweetalert2";
 
 const Register = () => {
-
-  const {newRegister} = useContext(AuthContext)
+  const { newRegister, updateUserProfile } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
   const onSubmit = (data) => {
     // console.log(data);
-    newRegister(data.email, data.password)
-    .then(result => {
+    newRegister(data.email, data.password).then((result) => {
       const LoggedUser = result.user;
-      console.log(LoggedUser);
-      Swal.fire(
-        'Yahh!',
-        'You Account Create Successfully!',
-        'success' 
-      )
-    })
-    .catch(error => {
-      console.log(error.message);
-      Swal.fire(
-        'Yahh!',
-        `${error.message}`,
-        'success' 
-      )
-    })
+      updateUserProfile(data.name, data.photoURL)
+        .then(() => {
+          const saveUser = {name:data.name, email:data.email}
+          // user login data backend
+          fetch("http://localhost:5000/users",{
+            method:'POST',
+            headers:{
+              'content-type':'application/json'
+            },
+            body:JSON.stringify(saveUser)
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                reset();
+                Swal.fire(
+                  "Yahh!",
+                  "You Account Create Successfully!",
+                  "success"
+                );
+                navigate("/");
+              }
+            });
+        })
+        // consoe.log(LoggedUser);
+
+        .catch((error) => {
+          console.log(error.message);
+          Swal.fire("Yahh!", `${error.message}`, "success");
+          navigate("/");
+        });
+    });
   };
 
   return (

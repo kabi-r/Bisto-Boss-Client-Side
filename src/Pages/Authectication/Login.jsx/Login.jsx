@@ -10,12 +10,13 @@ import { Button } from "flowbite-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import Swal from "sweetalert2";
+import SocalLogin from "../SocalLogin/SocalLogin";
 
 const Login = () => {
-  const {singIn} = useContext(AuthContext)
-  const location = useLocation()
-  const navigate = useNavigate()
-  const from = location.state?.from?.pathname || '/';
+  const { singIn } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
   const captchaRef = useRef(null);
   const [disable, setDisable] = useState("true");
   useEffect(() => {
@@ -28,24 +29,16 @@ const Login = () => {
     const password = form.password.value;
     // console.log(email, password);
     singIn(email, password)
-    .then(result => {
-      const LoggedUser = result.user;
-      // console.log(LoggedUser);
-      Swal.fire(
-        'Yahh!',
-        'Successfully Login!',
-        'success' 
-      )
-      navigate(from , {replace:true})
-    })
-    .catch(error => {
-      console.log(error.message);
-      Swal.fire(
-        'Yahh!',
-        `${error.message}`,
-        'success' 
-      )
-    })
+      .then((result) => {
+        const LoggedUser = result.user;
+        // console.log(LoggedUser);
+        Swal.fire("Yahh!", "Successfully Login!", "success");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error.message);
+        Swal.fire("Yahh!", `${error.message}`, "success");
+      });
   };
   const handleCaptcha = () => {
     const user_captcha_value = captchaRef.current.value;
@@ -128,11 +121,14 @@ const Login = () => {
           <div className="text-center space-y-2">
             <h5 className="text-center text-orange-500 pt-2 font-medium text-base">
               New here?
-              <Link to='/register'>
+              <Link to="/register">
                 <span className="font-bold">Create a New Account</span>
               </Link>{" "}
             </h5>
-            <p>Or sign in with</p>
+            <div className="text-center mx-auto flex flex-col">
+              <p>Or sign in with</p>
+              <SocalLogin></SocalLogin>
+            </div>
           </div>
         </div>
       </div>

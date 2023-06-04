@@ -15,6 +15,11 @@ import Reservation from "../Pages/UserDashbord/Reservation/Reservation";
 import PaymentHistory from "../Pages/UserDashbord/PaymentHistory/PaymentHistory";
 import AddReview from "../Pages/UserDashbord/AddReview/AddReview";
 import PrivateRoute from "./PrivetRoute";
+import AllUsers from "../Pages/Admin Dashboard/AllUsers/AllUsers";
+import AdminHome from "../Pages/Admin Dashboard/AdminHome/AdminHome";
+import AddItems from "../Pages/Admin Dashboard/AddItems/AddItems";
+import ManageItems from "../Pages/Admin Dashboard/ManageItems/ManageItems";
+import ManageBoking from "../Pages/Admin Dashboard/ManageBoking/ManageBoking";
 
 export const router = createBrowserRouter([
     {
@@ -67,6 +72,26 @@ export const router = createBrowserRouter([
             {
                 path:'addReview',
                 element:<AddReview></AddReview>
+            },
+            {
+                path:'adminHome',
+                element:<AdminHome></AdminHome>
+            },
+            {
+                path:'addItems',
+                element:<AddItems></AddItems>
+            },
+            {
+                path:'manageItems',
+                element:<ManageItems></ManageItems>
+            },
+            {
+                path:'manageBoking',
+                element:<ManageBoking></ManageBoking>
+            },
+            {
+                path:'allUser',
+                element:<AllUsers></AllUsers>
             }
         ]
     }

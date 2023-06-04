@@ -9,6 +9,7 @@ const Header = () => {
   const [navbar, setNavbar] = useState(false);
   const [cart] = useCart()
   const { user, logOut } = useContext(AuthContext);
+  // console.log(user);
   const handleLogOut = () => {
     logOut();
   };
@@ -55,7 +56,7 @@ const Header = () => {
                   <Link href="/navbars">Contact</Link>
                 </li>
 
-                <Link to='/dashboard/userhome'><button
+                <Link to='/dashboard'><button
                   type="button"
                   className="inline-flex items-center px-5  text-sm font-medium text-center py-2 text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
